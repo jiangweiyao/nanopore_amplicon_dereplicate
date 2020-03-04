@@ -26,7 +26,8 @@ sudo apt update
 sudo apt install git
 ```
 
-### Installation directions assume (and install) the code into your home path. Change the instructions if appropriate. 
+##Installation directions 
+These instructions install the code into your home path. Change the instructions if appropriate. 
 
 ### Clone the code from repository
 ```
@@ -34,7 +35,7 @@ cd ~
 git clone https://github.com/jiangweiyao/nanopore_amplicon_dereplicate.git
 ```
 
-## Install Miniconda (if no Conda is install on system). 
+### Install Miniconda (if no Conda is install on system). 
 You can run the prepackaged script install_miniconda.sh to install into your home directory (recommended) by using the following command
 ```
 sh ~/nanopore_amplicon_dereplicate/install_miniconda.sh
@@ -43,7 +44,7 @@ sh ~/nanopore_amplicon_dereplicate/install_miniconda.sh
 Detailed instruction on the the Miniconda website if anything goes wrong:
 https://conda.io/projects/conda/en/latest/user-guide/install/linux.html
 
-## Clone the environment. Need to do once.
+### Clone the environment. Need to do once.
 
 We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. This environment is called "canu_medaka". The following command assumes your environment file is in your home path. Modify as appropriate.
 
@@ -53,7 +54,7 @@ conda env create -f ~/nanopore_amplicon_dereplicate/environment.yml
 
 The command to generate the environment originally is in the included `canu_medaka_recipe.txt` file. 
 
-## Activate your environment and run your code.
+## Run the code.
 
 Activating your environment makes the software you installed in that environment available for use. You will see "(canu_medaka)" in front bash after activation.
 ```

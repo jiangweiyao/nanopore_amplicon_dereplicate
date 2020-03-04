@@ -8,10 +8,11 @@ Specify a folder containing files named BC**.fastq to process. This script will 
 
 
 Usage:
-   nanopore_amplicon_dereplicate_batch -i <input directory> [--readSamplingCoverage <max number of reads> --genomeSize <estimated amplicon length> --correctedErrorRate <estimated error rate> --model <polish model> --stopOnReadQuality <stop on bad quality> --minReadLength <discard read length less than> --overOverlapLength <required overlap length> --corMinCoverage <corMinCoverage>]
+   nanopore_amplicon_dereplicate_batch -i <input directory> -o <output directory> [--readSamplingCoverage <max number of reads> --genomeSize <estimated amplicon length> --correctedErrorRate <estimated error rate> --model <polish model> --stopOnReadQuality <stop on bad quality> --minReadLength <discard read length less than> --overOverlapLength <required overlap length> --corMinCoverage <corMinCoverage>]
 
 Options:
    -i input directory (required) 
+   -o output directory (required)
    --genomeSize [default: 2000]
    --stopOnReadQuality [default: false]
    --minReadLength [default: 700]
@@ -28,19 +29,20 @@ opts <- docopt(doc)
 fastqs <- sort(list.files(opts$i, pattern="BC(.*).((fastq|fq)(|\\.gz))$", full.names = TRUE))
 
 print(fastqs)
+dir.create(opts$o, recursive = TRUE)
 
 for(file in fastqs){
 
 
 
-    canu_cmd <- (paste0("canu -p asm -d ", file_path_sans_ext(basename(file)), "_canu useGrid=0 -nanopore-raw ", file, " genomeSize=", opts$genomeSize, " stopOnReadQuality=", opts$stopOnReadQuality, " minReadLength=",opts$minReadLength, " minOverlapLength=", opts$minOverlapLength, " corMinCoverage=", opts$corMinCoverage, " readSamplingCoverage=", opts$readSamplingCoverage, " correctedErrorRate=", opts$correctedErrorRate))
+    canu_cmd <- (paste0("canu -p asm -d ", opts$o, "/", file_path_sans_ext(basename(file)), "_canu useGrid=0 -nanopore-raw ", file, " genomeSize=", opts$genomeSize, " stopOnReadQuality=", opts$stopOnReadQuality, " minReadLength=",opts$minReadLength, " minOverlapLength=", opts$minOverlapLength, " corMinCoverage=", opts$corMinCoverage, " readSamplingCoverage=", opts$readSamplingCoverage, " correctedErrorRate=", opts$correctedErrorRate))
 
-    medaka_cmd <- (paste0("medaka_consensus -i ", opts$i, " -d ", file_path_sans_ext(basename(file)), "_canu/asm.unitigs.fasta -o ", file_path_sans_ext(basename(file)), "_medaka -m ", opts$model))
+    medaka_cmd <- (paste0("medaka_consensus -i ", opts$i, " -d ", opts$o, "/", file_path_sans_ext(basename(file)), "_canu/asm.unitigs.fasta -o ", opts$o, "/", file_path_sans_ext(basename(file)), "_medaka -m ", opts$model))
 
 
     print("commands being executed:")
-    print(canu_cmd)
-    print(medaka_cmd)
+#    print(canu_cmd)
+#    print(medaka_cmd)
 
 
     system(canu_cmd)

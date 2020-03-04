@@ -53,7 +53,7 @@ conda env create -f ~/nanopore_amplicon_dereplicate/environment.yml
 
 The command to generate the environment originally is in the included `canu_medaka_recipe.txt` file. 
 
-### Activate your environment and run your code.
+## Activate your environment and run your code.
 
 Activating your environment makes the software you installed in that environment available for use. You will see "(canu_medaka)" in front bash after activation.
 ```
@@ -78,7 +78,7 @@ Get help for how to use the script with the following command
 When you are finished running the workflow, exit out of your environment by running `conda deactivate`. Deactivating your environment exits out of your current environment and protects it from being modified by other programs. You can build as many environments as you want and enter and exit out of them. Each environment is separate from each other to prevent version or dependency clashes. The author recommands using Conda/Bioconda to manage your dependencies.
 
 
-### What the code is actually doing
+## What the code is actually doing
 Two actual lines of code runs the workflow. We wrapped it into an user friendly interface using docopt/R but the core commands if you are interested are here.
 
 Use canu to dereplicate. -nanopore-raw takes the raw input file location and outputs it to -d location. You can look up the canu instruction manual to get more details on options.  

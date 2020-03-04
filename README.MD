@@ -15,8 +15,8 @@ And then runs the attached scripts using the attached scripts.
 ## Summary - How to run after installation.
 1. Activate conda environment - `conda activate canu_medaka`
 2. Run run test data - `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test`
-3. Deactivate conda environment - `conda deactivate`
-4. Run `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -h` to get help. 
+3. Run `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -h` to get help.
+4. Deactivate conda environment - `conda deactivate`
 
 ## Clone this code using GIT
 
@@ -35,34 +35,23 @@ git clone https://github.com/jiangweiyao/nanopore_amplicon_dereplicate.git
 ```
 
 ## Install Miniconda (if no Conda is install on system). 
-
-### Install and setup Miniconda
-
 You can run the prepackaged script install_miniconda.sh to install into your home directory (recommended) by using the following command
 ```
 sh ~/nanopore_amplicon_dereplicate/install_miniconda.sh
 ```
 
-
-You can also install it manually to your desire by modifying and running the following commands. 
-```
-wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
-sh Miniconda3-latest-Linux-x86_64.sh -b
-echo 'export PATH=~/miniconda3/bin:$PATH' >> ~/.bashrc
-source ~/.bashrc
-conda init bash
-source ~/.bashrc
-conda config --set auto_activate_base false
-rm Miniconda3-latest-Linux-x86_64.sh
-```
+Detailed instruction on the the Miniconda website if anything goes wrong:
+https://conda.io/projects/conda/en/latest/user-guide/install/linux.html
 
 ## Clone the environment. Need to do once.
 
-### We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. This environment is called "canu_medaka". The following command assumes your environment file is in your home path. Modify as appropriate.
+We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. This environment is called "canu_medaka". The following command assumes your environment file is in your home path. Modify as appropriate.
 
 ```
 conda env create -f ~/nanopore_amplicon_dereplicate/environment.yml
 ```
+
+The command to generate the environment originally is in the included `canu_medaka_recipe.txt` file. 
 
 ### Activate your environment and run your code.
 

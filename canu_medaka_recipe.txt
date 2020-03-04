@@ -1,0 +1,1 @@
+conda create -n canu_medaka canu=1.9-0 medaka=0.11.5-0 r-docopt=0.6 -y

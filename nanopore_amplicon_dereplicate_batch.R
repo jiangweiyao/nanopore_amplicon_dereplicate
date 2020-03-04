@@ -33,16 +33,16 @@ for(file in fastqs){
 
 
 
-canu_cmd <- (paste0("canu -p asm -d ", file_path_sans_ext(basename(file)), "_canu useGrid=0 -nanopore-raw ", file, " genomeSize=", opts$genomeSize, " stopOnReadQuality=", opts$stopOnReadQuality, " minReadLength=",opts$minReadLength, " minOverlapLength=", opts$minOverlapLength, " corMinCoverage=", opts$corMinCoverage, " readSamplingCoverage=", opts$readSamplingCoverage, " correctedErrorRate=", opts$correctedErrorRate))
+    canu_cmd <- (paste0("canu -p asm -d ", file_path_sans_ext(basename(file)), "_canu useGrid=0 -nanopore-raw ", file, " genomeSize=", opts$genomeSize, " stopOnReadQuality=", opts$stopOnReadQuality, " minReadLength=",opts$minReadLength, " minOverlapLength=", opts$minOverlapLength, " corMinCoverage=", opts$corMinCoverage, " readSamplingCoverage=", opts$readSamplingCoverage, " correctedErrorRate=", opts$correctedErrorRate))
 
-medaka_cmd <- (paste0("medaka_consensus -i ", opts$i, " -d ", file_path_sans_ext(basename(file)), "_canu/asm.unitigs.fasta -o ", file_path_sans_ext(basename(file)), "_medaka -m ", opts$model))
-
-
-print("commands being executed:")
-print(canu_cmd)
-print(medaka_cmd)
+    medaka_cmd <- (paste0("medaka_consensus -i ", opts$i, " -d ", file_path_sans_ext(basename(file)), "_canu/asm.unitigs.fasta -o ", file_path_sans_ext(basename(file)), "_medaka -m ", opts$model))
 
 
-#system(canu_cmd)
-#system(medaka_cmd)
+    print("commands being executed:")
+    print(canu_cmd)
+    print(medaka_cmd)
+
+
+    system(canu_cmd)
+    system(medaka_cmd)
 }

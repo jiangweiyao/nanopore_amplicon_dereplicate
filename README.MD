@@ -9,13 +9,14 @@ And then runs the attached scripts using the attached scripts.
 
 ## Summary - Installation 
 1. Clone Repository 
-2. Install Conda/Bioconda if not already in environment
-3. Create conda environment for dependencies
+2. Install Conda if not already in environment
+3. Create conda environment
 
 ## Summary - How to run after installation.
 1. Activate conda environment - `conda activate canu_medaka`
-2. Run script - `nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/Downloads`
+2. Run run test data - `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test`
 3. Deactivate conda environment - `conda deactivate`
+4. Run `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -h` to get help. 
 
 ## Clone this code using GIT
 
@@ -25,41 +26,42 @@ sudo apt update
 sudo apt install git
 ```
 
+### Installation directions assume (and install) the code into your home path. Change the instructions if appropriate. 
+
 ### Clone the code from repository
 ```
+cd ~
 git clone https://github.com/jiangweiyao/nanopore_amplicon_dereplicate.git
 ```
 
-## Install Miniconda (if no Conda is install on system). Setup Bioconda channel after. Need to do once.
+## Install Miniconda (if no Conda is install on system). 
 
-### Install and setup Miniconda (you can run using included Miniconda_install.sh)
+### Install and setup Miniconda
 
+You can run the prepackaged script install_miniconda.sh to install into your home directory (recommended) by using the following command
+```
+sh ~/nanopore_amplicon_dereplicate/install_miniconda.sh
+```
+
+
+You can also install it manually to your desire by modifying and running the following commands. 
 ```
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh
 sh Miniconda3-latest-Linux-x86_64.sh -b
-echo 'export PATH=~/miniconda3/bin:$PATH' >> .bashrc
+echo 'export PATH=~/miniconda3/bin:$PATH' >> ~/.bashrc
+source ~/.bashrc
 conda init bash
+source ~/.bashrc
 conda config --set auto_activate_base false
 rm Miniconda3-latest-Linux-x86_64.sh
 ```
 
-### Next, add bioconda and conda forge to the conda channel
+## Clone the environment. Need to do once.
+
+### We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. This environment is called "canu_medaka". The following command assumes your environment file is in your home path. Modify as appropriate.
 
 ```
-conda config --add channels defaults
-conda config --add channels bioconda
-conda config --add channels conda-forge
-```
-
-## Create the environment. Need to do once.
-
-### We use conda to create an environment (that we can activate and deactivate) to install our dependent software and resolve their dependencies. We will call that new environment "canu_medaka".
-
-```
-cd 
-
-```
-conda create -n canu_medaka canu=1.9-0 medaka=0.11.5-0 r-docopt=0.6 -y
+conda env create -f ~/nanopore_amplicon_dereplicate/environment.yml
 ```
 
 ### Activate your environment and run your code.
@@ -69,8 +71,25 @@ Activating your environment makes the software you installed in that environment
 conda activate canu_medaka
 ```
 
-Deactivating your environment exits out of your current environment, and returns you to your default system environment. You can build as many environments as you want and enter and exit out of them. Each environment is separate from each other to prevent version or dependency clashes. The author recommands using Conda/Bioconda to manage your dependencies.
+Test the single file version of the workflow with the following command
+```
+~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate.R -i ~/nanopore_amplicon_dereplicate/test/BC01_700bp.fastq -o test
+```
 
+Test the batch version of the workflow with the following command
+```
+~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test
+```
+
+Get help for how to use the script with the following command
+```
+~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate.R -h
+```
+
+When you are finished running the workflow, exit out of your environment by running `conda deactivate`. Deactivating your environment exits out of your current environment and protects it from being modified by other programs. You can build as many environments as you want and enter and exit out of them. Each environment is separate from each other to prevent version or dependency clashes. The author recommands using Conda/Bioconda to manage your dependencies.
+
+
+### What the code is actually doing
 Two actual lines of code runs the workflow. We wrapped it into an user friendly interface using docopt/R but the core commands if you are interested are here.
 
 Use canu to dereplicate. -nanopore-raw takes the raw input file location and outputs it to -d location. You can look up the canu instruction manual to get more details on options.  

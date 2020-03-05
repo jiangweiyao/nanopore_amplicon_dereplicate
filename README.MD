@@ -14,7 +14,7 @@ And then runs the attached scripts using the attached scripts.
 
 ## Summary - How to run after installation.
 1. Activate conda environment - `conda activate canu_medaka`
-2. Run run test data - `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test`
+2. Run run test data - `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test -o test`
 3. Run `~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -h` to get help.
 4. Deactivate conda environment - `conda deactivate`
 
@@ -68,7 +68,7 @@ Test the single file version of the workflow with the following command
 
 Test the batch version of the workflow with the following command
 ```
-~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test
+~/nanopore_amplicon_dereplicate/nanopore_amplicon_dereplicate_batch.R -i ~/nanopore_amplicon_dereplicate/test -o test
 ```
 
 Get help for how to use the script with the following command

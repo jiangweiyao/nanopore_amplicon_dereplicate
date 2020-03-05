@@ -38,7 +38,7 @@ git clone https://github.com/jiangweiyao/nanopore_amplicon_dereplicate.git
 ### Install Miniconda (if no Conda is install on system). 
 You can run the prepackaged script install_miniconda.sh to install into your home directory (recommended) by using the following command
 ```
-sh ~/nanopore_amplicon_dereplicate/install_miniconda.sh
+. ~/nanopore_amplicon_dereplicate/install_miniconda.sh
 ```
 
 Detailed instruction on the the Miniconda website if anything goes wrong:

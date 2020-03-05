@@ -8,3 +8,5 @@ conda init bash
 conda config --set auto_activate_base false
 . ~/.bashrc
 rm Miniconda3-latest-Linux-x86_64.sh
+
+conda env create -f ~/nanopore_amplicon_dereplicate/environment.yml

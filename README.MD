@@ -78,6 +78,13 @@ Get help for how to use the script with the following command
 
 When you are finished running the workflow, exit out of your environment by running `conda deactivate`. Deactivating your environment exits out of your current environment and protects it from being modified by other programs. You can build as many environments as you want and enter and exit out of them. Each environment is separate from each other to prevent version or dependency clashes. The author recommands using Conda/Bioconda to manage your dependencies.
 
+## Known issues
+### Issue 1: Perl clashing for canu
+Some systems preset the PERL5LIB variable, causing canu to look for the perl5 library in that location rather than the default location in the conda environment. You can manually reset the PERL5LIB variance using the following command
+`PERL5LIB=`
+
+You can also uncomment the R scripts to activate the command by editing the R scripts.
+
 
 ## What the code is actually doing
 Two actual lines of code runs the workflow. We wrapped it into an user friendly interface using docopt/R but the core commands if you are interested are here.
@@ -90,4 +97,4 @@ canu -p asm -d canu_BC02_cor  useGrid=0 -nanopore-raw barcode_fastq/BC02.fastq g
 Use medaka to polish the dereplicated amplicons. -i specifies where your fastq files are. -d points to where the dereplicated unitigs are. -o specifies output file. -m specifies model for polishing.  
 ```
 medaka_consensus -i barcode_fastq/BC02.fastq -d canu_BC02_cor/asm.unitigs.fasta -o BC02_medaka -m r941_min_high_g303
-```
+````

@@ -31,6 +31,10 @@ fastqs <- sort(list.files(opts$i, pattern="BC(.*).((fastq|fq)(|\\.gz))$", full.n
 print(fastqs)
 dir.create(opts$o, recursive = TRUE)
 
+##Uncomment the line below if your system has PERL5LIB variable preset and is causing canu to stop.
+#system("PERL5LIB=")
+
+
 for(file in fastqs){
 
 

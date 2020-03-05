@@ -26,6 +26,10 @@ opts <- docopt(doc)
 
 #print(opts)
 
+##Uncomment the line below if your system has PERL5LIB variable preset and is causing canu to stop.
+#system("PERL5LIB=")
+
+
 print("commands being executed:")
 
 canu_cmd <- (paste0("canu -p asm -d ", opts$o, "_canu useGrid=0 -nanopore-raw ", opts$i, " genomeSize=", opts$genomeSize, " stopOnReadQuality=", opts$stopOnReadQuality, " minReadLength=",opts$minReadLength, " minOverlapLength=", opts$minOverlapLength, " corMinCoverage=", opts$corMinCoverage, " readSamplingCoverage=", opts$readSamplingCoverage, " correctedErrorRate=", opts$correctedErrorRate))

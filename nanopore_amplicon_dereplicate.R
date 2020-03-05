@@ -27,8 +27,8 @@ opts <- docopt(doc)
 #print(opts)
 
 ##Uncomment the line below if your system has PERL5LIB variable preset and is causing canu to stop.
-#system("PERL5LIB=")
-
+#Sys.setenv(PERL5LIB = "")
+#system("echo PER5LIB")
 
 print("commands being executed:")
 

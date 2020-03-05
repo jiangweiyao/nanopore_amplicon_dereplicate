@@ -32,7 +32,8 @@ print(fastqs)
 dir.create(opts$o, recursive = TRUE)
 
 ##Uncomment the line below if your system has PERL5LIB variable preset and is causing canu to stop.
-#system("PERL5LIB=")
+#Sys.setenv(PERL5LIB = "")
+#system("echo PER5LIB")
 
 
 for(file in fastqs){

@@ -83,7 +83,7 @@ When you are finished running the workflow, exit out of your environment by runn
 Some systems preset the PERL5LIB variable, causing canu to look for the perl5 library in that location rather than the default location in the conda environment. You can manually reset the PERL5LIB variance using the following command
 `PERL5LIB=`
 
-You can also uncomment the R scripts to activate the command by editing the R scripts.
+The R scripts should automatically set the variable.
 
 
 ## What the code is actually doing

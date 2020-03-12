@@ -6,5 +6,7 @@ echo 'export PATH="~/miniconda3/bin:$PATH"' >> ~/.bashrc
 . ~/.bashrc
 conda init bash
 conda config --set auto_activate_base false
-. ~/.bashrc
+conda config --add channels defaults
+conda config --add channels bioconda
+conda config --add channels conda-forge
 rm Miniconda3-latest-Linux-x86_64.sh

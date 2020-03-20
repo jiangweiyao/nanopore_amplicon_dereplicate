@@ -9,4 +9,5 @@ conda config --set auto_activate_base false
 conda config --add channels defaults
 conda config --add channels bioconda
 conda config --add channels conda-forge
+. ~/.bashrc
 rm Miniconda3-latest-Linux-x86_64.sh
